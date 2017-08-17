@@ -22,6 +22,12 @@ private slots:
     void baudSelection(QAction* baud);
     void menuSelection(QAction* item);
     void comPorts();
+    void on_sendButton_clicked();
+
+    void on_mainScrollBar_valueChanged(int value);
+
+    void on_barSendButton_clicked();
+
 private:
     //gui
     Ui::MainWindow *ui;

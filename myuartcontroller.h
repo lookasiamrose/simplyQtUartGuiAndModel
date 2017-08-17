@@ -25,6 +25,7 @@ public:
     //information about
     QList<QString> checkAvailablePorts();
     QList<QString> allAvailableCOMPorts();
+    bool isPortOpenned();
 
     //getters and setters
     QString getPortName();

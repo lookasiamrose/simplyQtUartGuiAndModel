@@ -11,6 +11,11 @@ MyUartController::~MyUartController()
 
     delete port;
 }
+bool MyUartController::isPortOpenned()
+{
+    return port->isOpen();
+}
+
 void MyUartController::writeChar(char char_arg)
 {
     if( (port != nullptr) && port->isOpen())

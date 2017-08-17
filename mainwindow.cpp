@@ -110,3 +110,35 @@ void MainWindow::comPorts()
         QMessageBox::warning(this,"Ports","No COM ports detected");
     }
 }
+
+void MainWindow::on_sendButton_clicked()
+{
+    if( uartController->isPortOpenned() )
+    {
+        for( int i=0; i< ui->mainLineField->text().size(); i++)
+        {
+            //send char from string, converting to standard char (from QChar)
+            uartController->writeChar( ui->mainLineField->text().at(i).toLatin1() );
+        }
+        ui->mainLineField->clear();
+    }else
+    {
+        QMessageBox::warning(this, "Warning!", "No port openned yet!");
+    }
+}
+
+void MainWindow::on_mainScrollBar_valueChanged(int value)
+{
+    ui->scrollBarProgress->setValue(value);
+}
+
+void MainWindow::on_barSendButton_clicked()
+{
+    QString value = QString::number( ui->scrollBarProgress->value() );
+
+    for( int i=0; i<value.size(); i++)
+    {
+        //send char from string, converting to standard char (from QChar)
+        uartController->writeChar( value.at(i).toLatin1() );
+    }
+}
